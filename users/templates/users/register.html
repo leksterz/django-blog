@@ -4,6 +4,14 @@
     {% csrf_token %}
     <fieldset class="form-group">
       <legend class="border-bottom mb-4">Join today</legend>
+      
+      <! -- 
+      the {{ form }} below is an import from the views 
+      it renders the UserRegisterForm info 
+      they are defined in forms.py
+      fields = ['username', 'email', 'password1', 'password2']
+      -- >
+
       {{ form|crispy }}
     </fieldset>
     <div class="form-group">

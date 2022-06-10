@@ -4,7 +4,12 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 
+# DJANGO allows us to use classes, like UserRegisterForm
+# to create HTML forms. A lot of the web is form driven 
+# so having this baked in the framework is very powerful
 def register(request):
+    # request paramater is required in nearly all view functions
+    # because we need to know the contenxt/metadata of the request
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
@@ -15,6 +20,9 @@ def register(request):
     else:
         form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
+
+def kip(request):
+    return render(request, 'users/kip.html')
 
 @login_required
 def profile(request):
